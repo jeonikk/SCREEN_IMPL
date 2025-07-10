@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+    <style>
+        h1{background-color: orange; 
+            color: white !important; /* !important white 우선 적용 */
+        }
+        </style>
+        <link rel="stylesheet" href="./css/common.css"> 
+        <!-- style 혹은 link는 문서의 순서에 따라 적용한다
+        ex)      <style>
+        h1{background-color: orange; color: white;}
+        </style>
+        <link rel="stylesheet" href="./css/common.css"> 
+        이 경우 링크문서가 적용
+        -->
+
+</head>
+
+<body>
+    <!-- 
+        문서내 style 태그
+        외부 css 생성 이후 link 설정(권장)
+        inline style(권장 x)
+        !important(권장 x) <-- 강제로 적용하는 방식
+        -->
+        
+        <h1 style="background-color: red; color: black;">HELLO WORLD</h1>
+        <!-- <h1 style="background-color: red; color: black;">HELLO WORLD</h1> 권장X -->
+
+</body>
+</html>
