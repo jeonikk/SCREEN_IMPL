@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        div{width:300px;height:300px;margin:30px;border:1px solid;}
+
+        .d1{
+            border-top: 2px solid red;
+            border-right: 3px dashed orange;
+            border-bottom: 4px dotted blue;
+            border-left: 5px double green;
+            
+        }
+        .d2{
+            /* border-radius: 10px; 전체 모서리를 깎는다
+            border-radius: 50%; 50퍼센트 만큼 깎는다 */ 
+            /* border-radius: 10px 50px; 상하,좌우 */
+            /* border-radius: 10px 50px 80px ; 상단 -> 우측 -> 하단 */
+        }
+        /* 삼각형 만들기 (모서리에 삼각형)*/
+        .d3{
+            border-top: 20px solid transparent;
+            border-right: 20px solid orange;
+            border-left: 20px solid transparent;
+            border-bottom: 20px solid orange;
+            width: 0;
+            height: 0;
+        }
+
+        /* 종이접기 */
+        .d4{
+            position: relative;
+            border: 1px solid orange;
+        }
+            .d4:after{
+                content: '';
+                position:absolute;
+                left: -1px;
+                top: -1px;
+                border-top: 20px solid white;
+                border-right: 20px solid orange;
+                border-left: 20px solid white;
+                border-bottom: 20px solid orange;
+                width: 0;
+                height: 0;
+            }
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+
+</body>
+</html>
