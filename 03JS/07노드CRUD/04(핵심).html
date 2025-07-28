@@ -77,11 +77,25 @@
         
             // 이벤트 처리 등록
             insertBtnEl.addEventListener('click',()=>{
-                const text = insertEl.value;
+                const text = insertEl.value;-
+                if(!isValid(text)){ //유효하지 않다면 return을 걸어서 나가버림
+                    return ;
+                }
                 // container에 item을 추가
                 createNode(text);
                 insertEl.value = "";
             });
+
+            insertEl.addEventListener('keydown',(e)=>{
+                // console.log(e);
+                if (e.keyCode == 13) {
+                    const text = insertEl.value;
+                    // container에 item 추가
+                    createNode(text);
+                    insertEl.value="";
+                }
+            });
+
             // 노드추가 함수 생성 (Hosting 적용)
             function createNode(text){
                 // 유효성 체크 - !!
@@ -103,10 +117,18 @@
 
                 // 속성추가
                 inputEl.setAttribute('readonly',true);
+                aEl.setAttribute('href','javascript:void(0)');
 
                 // 데이터 삽입
                 spanEl.innerHTML='delete';
                 inputEl.value=text;
+
+                // 이벤트추가
+                aEl.addEventListener('click',(e)=>{
+                    const itemEl = e.target.parentNode.parentNode.parentNode; // 노드 탐색 (원하는 상위 노드가 나올때까지 parentNode <- 입력)
+                    itemEl.remove(); //노드 삭제
+                });
+
                 // 노드간 연결
                 leftEl.appendChild(inputEl);
                 aEl.appendChild(spanEl);
@@ -116,6 +138,25 @@
                 itemEl.appendChild(rightEl);
                 containerEl.appendChild(itemEl);
             }
+            // 유효성 검증 함수
+            function isValid(text){
+                const regex = /^[0-9]/;
+                // 공백여부 확인
+                // if(text===''||text===null){
+                if(text.trim() ===''||text.trim() === null){ // 앞 뒤 공백 제거
+                    alert("내용을 입력하세요");
+                    return flase;
+                }
+                if (regex.test(text)) { //정규표현식에 부합된다면 true <- 문제 생김!
+                    alert("첫번째는 숫자를 입력할 수 없습니다");
+                    return ;
+
+                }
+
+                return true;
+            }
+
+
         })
     </script>
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="start()">예약실행</button>
+    <button onclick="stop()">예약취소</button>
+    <hr/>
+    <div class="d1"></div>
+
+    <script>
+        let id = null;
+
+        const start = ()=>{
+            const d1El = document.querySelector('.d1');
+            id=setTimeout(()=>{
+                d1El.innerHTML='SETTIMEOUT RESULT..';
+            },3000);
+            console.log('id',id);
+        }
+        
+        const stop = ()=>{
+            clearTimeout(id); // 해당 아이디에 존재하는 스레드만 종료시킴 (아이디를 여러번 실행해도 마지막 스레드만 종료)
+        }
+    </script>
+
+</body>
+</html>
