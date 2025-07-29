@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<!-- chartjs 에 차트구성 나와있음 -->
+
+<body style="display: flex;justify-content: center;align-items: center;height: 100vh;">
+
+    <div style="width: 800px; height: 500px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const dataSet = [
+            {
+                label: 'red',
+                data: [12, 0, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'red',
+                boderColor: '',
+                // barPercentage: 5
+            },
+            {
+                label: 'orange',
+                data: [0, 22, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'orange',
+                boderColor: '',
+                // barPercentage: 5
+            },
+            {
+                label: 'yellow',
+                data: [0, 0, 30, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'yellow',
+                boderColor: '',
+                // barPercentage: 5
+            },
+
+            {
+                label: 'green',
+                data: [0, 0, 0, 2, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'green',
+                boderColor: '',
+                // barPercentage: 5
+            },
+
+            {
+                label: 'blue',
+                data: [0, 0, 0, 0, 17, 0],
+                borderWidth: 1,
+                backgroundColor: 'blue',
+                boderColor: '',
+                // barPercentage: 5
+            },
+
+            {
+                label: 'navy',
+                data: [0, 0, 0, 0, 0, 32],
+                borderWidth: 1,
+                backgroundColor: 'navy',
+                boderColor: '',
+                // barPercentage: 12
+            },
+
+        ]
+        const option = {
+            // line에 적용
+            // animation:{
+            //     tension:{
+            //         duration : 1000,
+            //         easing : 'liner',
+            //         from : 1,
+            //         to : 0,
+            //         loop : true,
+            //     }
+            // },
+
+            // bar에 적용
+            animation :{
+                delay : (el)=>{return el.dataIndex*100;},
+            },
+
+            scales: {
+                x: {
+                    stacked: true, // 바 크기 맞추기
+                    // barPercentage: 2,
+                },
+                y: {
+                    beginAtZero: true,
+                    // max:100,
+                    // min:0,
+                    // ticks:{
+                    //     stepSize:10
+                    // }
+                },
+            },
+            onClick : (event,chartEl)=>{
+                // console.log(event);
+                console.log(chartEl);
+            }
+        }
+        new Chart(ctx, {
+            type: 'bar', // bar, line, pie, doughnut, //bubble, scatter, heatmap... <-- 차트 형태
+            data: {
+                labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Navy'], //가로줄 이름
+                // datasets: [{
+                //     label: '# of Votes',
+                //     data: [12, 19, 3, 5, 2, 3], // 각 차트의 데이터
+                //     borderWidth: 1 //차트 테두리
+                datasets: dataSet,
+            },
+            options: option
+        });
+    </script>
+
+</body>
+
+</html>
